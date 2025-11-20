@@ -1,0 +1,83 @@
+[build-system]
+requires = ["setuptools>=45", "wheel", "setuptools_scm[toml]>=6.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agent4-gmail-draft-creator"
+version = "0.1.0"
+description = "Agent4: Gmail Draft Creator - Create Gmail drafts from exercise submissions"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [
+    {name = "Claude Code", email = "noreply@anthropic.com"}
+]
+
+dependencies = [
+    "openpyxl>=3.0.0",
+    "google-auth>=2.0.0",
+    "google-auth-oauthlib>=0.4.0",
+    "google-auth-httplib2>=0.1.0",
+    "google-api-python-client>=2.0.0",
+    "python-dotenv>=0.19.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=3.0.0",
+    "black>=22.0.0",
+    "pylint>=2.12.0",
+    "mypy>=0.950",
+]
+
+[project.urls]
+Homepage = "https://github.com/anthropics/claude-code"
+Repository = "https://github.com/anthropics/claude-code"
+Issues = "https://github.com/anthropics/claude-code/issues"
+
+[tool.setuptools]
+packages = ["agent4"]
+
+[tool.black]
+line-length = 100
+target-version = ['py38']
+
+[tool.pylint]
+max-line-length = 100
+min-similarity-lines = 5
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests", "."]
+python_files = ["test_*.py"]
+addopts = "-v --tb=short --strict-markers"
+markers = [
+    "unit: unit tests",
+    "integration: integration tests",
+    "slow: slow tests",
+]
+
+[tool.coverage.run]
+source = ["agent4"]
+omit = [
+    "*/tests/*",
+    "*/test_*.py",
+    "*/__pycache__/*",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+    "if TYPE_CHECKING:",
+    "if typing.TYPE_CHECKING:",
+]

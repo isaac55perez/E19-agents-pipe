@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=65.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agent3-greeting-transformer"
+version = "0.1.0"
+description = "Excel Greeting Transformer - Add personalized greetings to student grades"
+readme = "README.md"
+authors = [
+    {name = "Claude Code", email = "claude@anthropic.com"}
+]
+license = {text = "MIT"}
+requires-python = ">=3.9"
+dependencies = [
+    "openpyxl>=3.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests", "."]
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
+addopts = "-v --tb=short"

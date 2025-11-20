@@ -1,0 +1,10 @@
+[project]
+name = "agent2"
+version = "0.1.0"
+description = "Python repository analyzer for code quality grading based on file size distribution"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "openpyxl>=3.0.0",
+    "GitPython>=3.1.0",
+]
